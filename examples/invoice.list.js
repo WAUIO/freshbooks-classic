@@ -5,11 +5,11 @@ var FreshBooks = require('../')
 This requires your "API URL" and "Authentication Token". To get these variables
 open FreshBooks and goto My Account > FreshBooks API. */
 
-var api_url = 'https://freshbooksjs.freshbooks.com/api/2.1/xml-in',
-  api_token = '59dbd7310470641ff2332bd016ac2e4e'
+var api_url = 'https://freshbooksjs.freshbooks.com/api/2.1/xml-in'
+var api_token = '59dbd7310470641ff2332bd016ac2e4e'
 
-var freshbooks = new FreshBooks(api_url, api_token),
-  invoice = new freshbooks.Invoice()
+var freshbooks = new FreshBooks(api_url, api_token)
+var invoice = new freshbooks.Invoice()
 
 /* To list invoices, use the list() method.
 
