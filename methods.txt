@@ -1,0 +1,20 @@
+# libxmljs methods
+
+## libxml
+	new libxml.Document()
+	libxml.parseXmlString(string)
+
+## xml methods
+	xml.node(string)
+	xml.get(xmlPath, xmlNamespace)
+	xml.find(xmlPath, xmlNamespace).forEach(node => {})
+	xml.toString()
+
+## node methods
+	node.childNodes()
+	node.toString()
+	node.length
+	node.name()
+	node.attr(string).value()
+	node.attr(string, value)
+	node.text()

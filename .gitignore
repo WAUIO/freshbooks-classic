@@ -5,3 +5,4 @@ node_modules
 lcov.info
 coverage.lcov
 package-lock.json
+.idea
