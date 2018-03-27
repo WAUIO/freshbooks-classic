@@ -1,8 +1,8 @@
 # Freshbooks.js
 
-[![Build Status](https://travis-ci.org/flowxo/freshbooks.js.svg?branch=master)](https://travis-ci.org/flowxo/freshbooks.js)
-[![npm version](https://badge.fury.io/js/freshbooks.svg)](http://badge.fury.io/js/freshbooks.js)
-[![Dependency Status](https://david-dm.org/flowxo/freshbooks.js.svg)](https://david-dm.org/flowxo/freshbooks.js)
+[![npm version](https://badge.fury.io/js/%40leonardodino%2Ffreshbooks.svg)](https://www.npmjs.com/package/@leonardodino/freshbooks)
+[![Build Status](https://travis-ci.org/leonardodino/freshbooks.js.svg?branch=master)](https://travis-ci.org/leonardodino/freshbooks.js)
+[![Test Coverage](https://codecov.io/gh/leonardodino/dot-fp/branch/master/graph/badge.svg)](https://codecov.io/gh/leonardodino/dot-fp)
 
 Freshbooks.js is a node.js module providing a wrapper to the [FreshBooks]
 (http://www.freshbooks.com) API.
@@ -13,7 +13,15 @@ docs and this wrapper feel free to file an "Issue".
 
 ## Installation
 
-    $ npm install freshbooks
+```shell
+$ npm install --save @leonardodino/freshbooks
+```
+
+or
+
+```shell
+$ yarn add @leonardodino/freshbooks
+```
 
 Note: This module utilises [libxmljs](https://github.com/polotek/libxmljs). You
 will need have the **libxml2** library installed and also the **libxml2-devel**
@@ -21,20 +29,19 @@ will need have the **libxml2** library installed and also the **libxml2-devel**
 utility that is needed for compiling.  **This command must be in your path.**
 
 ## Example
+```javascript
+const FreshBooks = require('freshbooks')
+const freshbooks = new FreshBooks(api_url, api_token)
+const invoice = new freshbooks.Invoice()
 
-    var FreshBooks = require("freshbooks");
-
-    var freshbooks = new FreshBooks(api_url, api_token)
-      , invoice = new freshbooks.Invoice();
-
-    invoice.get(invoice_id, function(err, invoice) {
-      if(err) { //returns if an error has occured, ie invoice_id doesn't exist.
-        console.log(err);
-      } else {
-        console.log("Invoice Number:" + invoice.number);
-      }
-    });
-
+invoice.get(invoice_id, function(err, invoice){
+  if(err){
+    //returns if an error has occured, ie invoice_id doesn't exist.
+    return console.log(err)
+  }
+  console.log(`Invoice Number: ${invoice.number}`)
+})
+```
 ## Changelog
 
 **v2.0.0 - 2016-09-03**
@@ -88,7 +95,7 @@ Flow XO would like to thank Marc for all his original work on this project!
 
 (The MIT License)
 
-Copyright (c) 2015 Flow XO &lt;support@flowxo.com&gt;
+Copyright (c) 2018 Leonardo Dino
 
 Permission is hereby granted, free of charge, to any person obtaininga copy of
 this software and associated documentation files (the 'Software'), to deal in

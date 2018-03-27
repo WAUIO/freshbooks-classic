@@ -1,35 +1,39 @@
 {
-    "name": "freshbooks",
-    "description": "Node.js wrapper for FreshBooks (www.freshbooks.com) API",
+    "name": "@leonardodino/freshbooks",
+    "description": "Node.js wrapper for FreshBooks API",
     "version": "2.0.0",
-    "author": "Flow XO <support@flowxo.com>",
-    "contributors": [{
-        "name": "Marc Loney",
-        "email": "<marc@metacrash.com.au>"
-    }, {
-        "name": "Tom Spencer",
-        "email": "fiznool@gmail.com"
-    }],
-    "homepage": "https://github.com/flowxo/freshbooks.js",
+    "author": "Leonardo Dino",
+    "contributors": [
+        {
+            "name": "Marc Loney",
+            "email": "<marc@metacrash.com.au>"
+        },
+        {
+            "name": "Tom Spencer",
+            "email": "fiznool@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/leonardodino/freshbooks.js",
     "dependencies": {
         "libxmljs": "^0.18.0"
     },
-    "main": "index",
+    "main": "index.js",
     "engines": {
         "node": ">= 0.10.0"
     },
     "devDependencies": {
-        "mocha": "*"
+        "mocha": "5",
+        "nyc": "^11.6.0"
     },
     "scripts": {
-        "test": "make test"
+        "test": "mocha -t 10000 -R list"
     },
     "publishConfig": {
-        "tag": "latest"
+        "access": "public"
     },
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git://github.com/flowxo/freshbooks.js.git"
+        "url": "git://github.com/leonardodino/freshbooks.js.git"
     }
 }
