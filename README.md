@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40leonardodino%2Ffreshbooks.svg)](https://www.npmjs.com/package/@leonardodino/freshbooks)
 [![Build Status](https://travis-ci.org/leonardodino/freshbooks.js.svg?branch=master)](https://travis-ci.org/leonardodino/freshbooks.js)
-[![Test Coverage](https://codecov.io/gh/leonardodino/dot-fp/branch/master/graph/badge.svg)](https://codecov.io/gh/leonardodino/dot-fp)
+[![Test Coverage](https://codecov.io/gh/leonardodino/freshbooks.js/branch/master/graph/badge.svg)](https://codecov.io/gh/leonardodino/freshbooks.js)
 
 Freshbooks.js is a node.js module providing a wrapper to the [FreshBooks]
 (http://www.freshbooks.com) API.
