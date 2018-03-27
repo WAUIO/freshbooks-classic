@@ -2,8 +2,8 @@ var assert = require('assert'),
   FreshBooks = require('../')
 
 describe('Payment', function () {
-  var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e'),
-    payment = new freshbooks.Payment()
+  var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
+  var payment = new freshbooks.Payment()
 
   describe('create()', function () {
     it('should create a new payment', function (done) {

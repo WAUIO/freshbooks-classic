@@ -2,8 +2,8 @@ var assert = require('assert'),
   FreshBooks = require('../')
 
 describe('Item', function () {
-  var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e'),
-    item = new freshbooks.Item()
+  var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
+  var item = new freshbooks.Item()
 
   describe('create()', function () {
     it('should create a new item', function (done) {

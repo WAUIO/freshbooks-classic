@@ -2,8 +2,8 @@ var assert = require('assert'),
   FreshBooks = require('../')
 
 describe('Estimate', function () {
-  var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e'),
-    estimate = new freshbooks.Estimate()
+  var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
+  var estimate = new freshbooks.Estimate()
 
   describe('create()', function () {
     it('should create a new estimate', function (done) {

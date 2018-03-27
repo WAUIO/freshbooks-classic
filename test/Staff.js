@@ -2,8 +2,8 @@ var assert = require('assert'),
   FreshBooks = require('../')
 
 describe('Staff', function () {
-  var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e'),
-    staff = new freshbooks.Staff()
+  var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
+  var staff = new freshbooks.Staff()
 
   describe('current()', function () {
     it('should return current staff member', function (done) {
