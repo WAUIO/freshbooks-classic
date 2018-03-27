@@ -3,6 +3,7 @@ node_js:
   - 'node'
   - '8'
   - '6'
+  - '4'
 
 install:
   - yarn global add codecov
