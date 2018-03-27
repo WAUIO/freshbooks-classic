@@ -17,13 +17,14 @@ The first argument takens an array of any API options you want to pass on and
 the second is a callback to be executed when the method has completed.
 */
 
-invoice.list({client_id: 2}, function (err, invoices, options) {
-  if (err) { // returns if an error has occured, ie invoice_id doesn't exist.
-    console.log(err)
-  } else {
-    console.log(options)
-    invoices.forEach(function (invoice) {
-      console.log('Invoice Number:' + invoice.number)
-    })
-  }
+invoice.list({client_id: 2}, function(err, invoices, options) {
+	if (err) {
+		// returns if an error has occured, ie invoice_id doesn't exist.
+		console.log(err)
+	} else {
+		console.log(options)
+		invoices.forEach(function(invoice) {
+			console.log('Invoice Number:' + invoice.number)
+		})
+	}
 })

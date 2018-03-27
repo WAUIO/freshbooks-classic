@@ -25,7 +25,7 @@
     "devDependencies": {
         "mocha": "5",
         "nyc": "^11.6.0",
-        "standard": "^11.0.1"
+        "prettier": "^1.11.1"
     },
     "scripts": {
         "test": "nyc mocha -t 10000 -R list"

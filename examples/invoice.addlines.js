@@ -14,10 +14,11 @@ var invoice = new freshbooks.Invoice()
 invoice.invoice_id = 4368
 
 /* Pass a list of line items to be added to the addLines function */
-invoice.addLines([{name: 'Test', unit_cost: '5.00', quantity: '5', type: 'Item'}], function (err, invoice) {
-  if (err) { // returns if an error has occured, ie invoice_id doesn't exist.
-    console.log(err)
-  } else {
-    console.log('Number of Line Items:' + invoice.lines.length)
-  }
+invoice.addLines([{name: 'Test', unit_cost: '5.00', quantity: '5', type: 'Item'}], function(err, invoice) {
+	if (err) {
+		// returns if an error has occured, ie invoice_id doesn't exist.
+		console.log(err)
+	} else {
+		console.log('Number of Line Items:' + invoice.lines.length)
+	}
 })

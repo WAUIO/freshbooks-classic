@@ -19,15 +19,18 @@ create().
 
 invoice.client_id = 2
 
-invoice.lines.push({name: 'Test',
-  unit_cost: '5.00',
-  quantity: '5',
-  type: 'Item'})
+invoice.lines.push({
+	name: 'Test',
+	unit_cost: '5.00',
+	quantity: '5',
+	type: 'Item',
+})
 
-invoice.create(function (err, invoice) {
-  if (err) { // returns if an error has occured, ie invoice_id doesn't exist.
-    console.log(err)
-  } else {
-    console.log('Invoice Number:' + invoice.number)
-  }
+invoice.create(function(err, invoice) {
+	if (err) {
+		// returns if an error has occured, ie invoice_id doesn't exist.
+		console.log(err)
+	} else {
+		console.log('Invoice Number:' + invoice.number)
+	}
 })
