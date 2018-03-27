@@ -15,8 +15,9 @@
     ],
     "homepage": "https://github.com/leonardodino/freshbooks.js",
     "dependencies": {
-        "libxmljs": "^0.18.0",
-        "safe-buffer": "^5.1.1"
+        "safe-buffer": "^5.1.1",
+        "xmldom": "^0.1.27",
+        "xpath": "^0.0.27"
     },
     "main": "index.js",
     "engines": {
