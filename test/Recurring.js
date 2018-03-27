@@ -3,11 +3,11 @@
 var assert = require('assert')
 var FreshBooks = require('../')
 
-describe('Recurring', function() {
+describe('Recurring', () => {
 	var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
 	var recurring = new freshbooks.Recurring()
 
-	describe('create()', function() {
+	describe('create()', () => {
 		it('should create a new recurring invoice', function(done) {
 			recurring.client_id = 2
 
@@ -26,7 +26,7 @@ describe('Recurring', function() {
 		})
 	})
 
-	describe('update()', function() {
+	describe('update()', () => {
 		it('should update a recurring invoice', function(done) {
 			var id = recurring.recurring_id
 
@@ -39,7 +39,7 @@ describe('Recurring', function() {
 		})
 	})
 
-	describe('get()', function() {
+	describe('get()', () => {
 		it('should get a recurring invoice', function(done) {
 			recurring.get(recurring.recurring_id, function(err, recurring) {
 				done(err)
@@ -47,7 +47,7 @@ describe('Recurring', function() {
 		})
 	})
 
-	describe('list()', function() {
+	describe('list()', () => {
 		it('should list an array of recurring invoices', function(done) {
 			recurring.list({client_id: recurring.client_id}, function(err, invoices) {
 				done(err)
@@ -55,7 +55,7 @@ describe('Recurring', function() {
 		})
 	})
 
-	describe('delete()', function() {
+	describe('delete()', () => {
 		it('should delete a recurring invoice', function(done) {
 			recurring.delete(function(err, recurring) {
 				done(err)

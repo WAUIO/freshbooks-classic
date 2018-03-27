@@ -3,11 +3,11 @@
 var assert = require('assert')
 var FreshBooks = require('../')
 
-describe('Payment', function() {
+describe('Payment', () => {
 	var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
 	var payment = new freshbooks.Payment()
 
-	describe('create()', function() {
+	describe('create()', () => {
 		it('should create a new payment', function(done) {
 			payment.client_id = 2
 			payment.amount = '20.00'
@@ -18,7 +18,7 @@ describe('Payment', function() {
 		})
 	})
 
-	describe('update()', function() {
+	describe('update()', () => {
 		it('should update a payment', function(done) {
 			payment.amount = '25.00'
 
@@ -28,7 +28,7 @@ describe('Payment', function() {
 		})
 	})
 
-	describe('get()', function() {
+	describe('get()', () => {
 		it('should get a payment', function(done) {
 			payment.get(payment.payment_id, function(err, payment) {
 				done(err)
@@ -36,7 +36,7 @@ describe('Payment', function() {
 		})
 	})
 
-	describe('list()', function() {
+	describe('list()', () => {
 		it('should list an array of payments', function(done) {
 			payment.list(function(err, payments) {
 				done(err)
@@ -44,7 +44,7 @@ describe('Payment', function() {
 		})
 	})
 
-	describe('delete()', function() {
+	describe('delete()', () => {
 		it('should delete a payment', function(done) {
 			payment.delete(function(err, payment) {
 				done(err)

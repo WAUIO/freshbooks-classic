@@ -3,11 +3,11 @@
 var assert = require('assert')
 var FreshBooks = require('../')
 
-describe('Item', function() {
+describe('Item', () => {
 	var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
 	var item = new freshbooks.Item()
 
-	describe('create()', function() {
+	describe('create()', () => {
 		it('should create a new item', function(done) {
 			item.name = 'Test Item' + Math.random()
 
@@ -17,7 +17,7 @@ describe('Item', function() {
 		})
 	})
 
-	describe('update()', function() {
+	describe('update()', () => {
 		it('should update an item', function(done) {
 			item.description = 'Test Item'
 
@@ -27,7 +27,7 @@ describe('Item', function() {
 		})
 	})
 
-	describe('get()', function() {
+	describe('get()', () => {
 		it('should get an item', function(done) {
 			item.get(item.item_id, function(err, item) {
 				done(err)
@@ -35,7 +35,7 @@ describe('Item', function() {
 		})
 	})
 
-	describe('list()', function() {
+	describe('list()', () => {
 		it('should list an array of items', function(done) {
 			item.list(function(err, items) {
 				done(err)
@@ -43,7 +43,7 @@ describe('Item', function() {
 		})
 	})
 
-	describe('delete()', function() {
+	describe('delete()', () => {
 		it('should delete an item', function(done) {
 			item.delete(function(err, item) {
 				done(err)

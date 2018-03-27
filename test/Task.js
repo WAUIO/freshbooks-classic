@@ -3,11 +3,11 @@
 var assert = require('assert')
 var FreshBooks = require('../')
 
-describe('Task', function() {
+describe('Task', () => {
 	var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
 	var task = new freshbooks.Task()
 
-	describe('create()', function() {
+	describe('create()', () => {
 		it('should create a new task', function(done) {
 			task.name = 'Test Task'
 
@@ -17,7 +17,7 @@ describe('Task', function() {
 		})
 	})
 
-	describe('update()', function() {
+	describe('update()', () => {
 		it('should update a task', function(done) {
 			task.rate = '25.00'
 
@@ -27,7 +27,7 @@ describe('Task', function() {
 		})
 	})
 
-	describe('get()', function() {
+	describe('get()', () => {
 		it('should get a task', function(done) {
 			task.get(task.task_id, function(err, task) {
 				done(err)
@@ -35,7 +35,7 @@ describe('Task', function() {
 		})
 	})
 
-	describe('list()', function() {
+	describe('list()', () => {
 		it('should list an array of tasks', function(done) {
 			task.list(function(err, tasks) {
 				done(err)
@@ -43,7 +43,7 @@ describe('Task', function() {
 		})
 	})
 
-	describe('delete()', function() {
+	describe('delete()', () => {
 		it('should delete a task', function(done) {
 			task.delete(function(err, task) {
 				done(err)

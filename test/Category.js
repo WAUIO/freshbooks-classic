@@ -3,11 +3,11 @@
 var assert = require('assert')
 var FreshBooks = require('../')
 
-describe('Category', function() {
+describe('Category', () => {
 	var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
 	var category = new freshbooks.Category()
 
-	describe('create()', function() {
+	describe('create()', () => {
 		it('should create a new category', function(done) {
 			category.name = 'Test Category ' + Date.now()
 
@@ -17,7 +17,7 @@ describe('Category', function() {
 		})
 	})
 
-	describe('update()', function() {
+	describe('update()', () => {
 		it('should update a category', function(done) {
 			category.name = 'Test Category ' + Date.now()
 
@@ -27,7 +27,7 @@ describe('Category', function() {
 		})
 	})
 
-	describe('get()', function() {
+	describe('get()', () => {
 		it('should get a category', function(done) {
 			category.get(category.category_id, function(err, category) {
 				done(err)
@@ -35,7 +35,7 @@ describe('Category', function() {
 		})
 	})
 
-	describe('list()', function() {
+	describe('list()', () => {
 		it('should list an array of categories', function(done) {
 			category.list({client_id: category.client_id}, function(err, categories) {
 				done(err)
@@ -43,7 +43,7 @@ describe('Category', function() {
 		})
 	})
 
-	describe('delete()', function() {
+	describe('delete()', () => {
 		it('should delete a category', function(done) {
 			category.delete(function(err, category) {
 				done(err)
