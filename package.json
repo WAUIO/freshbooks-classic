@@ -15,7 +15,8 @@
     ],
     "homepage": "https://github.com/leonardodino/freshbooks.js",
     "dependencies": {
-        "libxmljs": "^0.18.0"
+        "libxmljs": "^0.18.0",
+        "safe-buffer": "^5.1.1"
     },
     "main": "index.js",
     "engines": {
@@ -23,7 +24,8 @@
     },
     "devDependencies": {
         "mocha": "5",
-        "nyc": "^11.6.0"
+        "nyc": "^11.6.0",
+        "prettier": "^1.11.1"
     },
     "scripts": {
         "test": "nyc mocha -t 10000 -R list"
