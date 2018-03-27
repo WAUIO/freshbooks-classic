@@ -1,5 +1,6 @@
 /* eslint-env mocha */
 
+
 var assert = require('assert')
 var FreshBooks = require('../')
 
@@ -15,6 +16,13 @@ describe('Estimate', () => {
 				name: 'Test',
 				unit_cost: '5.00',
 				quantity: '5',
+				type: 'Item',
+			})
+
+			estimate.lines.push({
+				name: 'Test2',
+				unit_cost: '15.00',
+				quantity: '1',
 				type: 'Item',
 			})
 
