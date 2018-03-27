@@ -1,7 +1,7 @@
 {
     "name": "@leonardodino/freshbooks",
     "description": "Node.js wrapper for FreshBooks API",
-    "version": "2.0.0",
+    "version": "3.0.0-wip-0.0.1",
     "author": "Leonardo Dino",
     "contributors": [
         {
