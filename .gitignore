@@ -1,2 +1,7 @@
-.idea
-node_modules/
+node_modules
+.DS_Store
+*.log
+.nyc_output
+lcov.info
+coverage.lcov
+package-lock.json
