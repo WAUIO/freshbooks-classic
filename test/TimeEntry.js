@@ -5,7 +5,7 @@ var FreshBooks = require('../')
 
 describe('Time Entry', () => {
 	var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
-	var time_entry = new freshbooks.Time_Entry()
+	var time_entry = new freshbooks.TimeEntry()
 
 	describe('create()', () => {
 		it('should create a new time entry', function(done) {

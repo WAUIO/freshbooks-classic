@@ -10,7 +10,7 @@ var select = require('xpath').useNamespaces({'': NS, 'xmlns': NS})
  * @api public
  */
 
-var Time_Entry = (module.exports = function() {})
+var TimeEntry = (module.exports = function() {})
 
 /**
  * Constructs XML requests for the API depending on method.
@@ -21,7 +21,7 @@ var Time_Entry = (module.exports = function() {})
  * @api private
  */
 
-Time_Entry.prototype._setXML = function(method, fn) {
+TimeEntry.prototype._setXML = function(method, fn) {
 	var xml = new DOMImplementation().createDocument()
 
 	var request = xml.appendChild(xml.createElement('request'))
@@ -83,7 +83,7 @@ Time_Entry.prototype._setXML = function(method, fn) {
  * @api private
  */
 
-Time_Entry.prototype._getXML = function(xml, fn) {
+TimeEntry.prototype._getXML = function(xml, fn) {
 	var nodes = select('//xmlns:time_entry', xml)
 
 	for (var x = 0; x < nodes.length; x++) {
@@ -105,7 +105,7 @@ Time_Entry.prototype._getXML = function(xml, fn) {
  * @api public
  */
 
-Time_Entry.prototype.create = function(fn) {
+TimeEntry.prototype.create = function(fn) {
 
 	this._setXML('time_entry.create', xml => {
 		this.freshbooks._get(xml, (err, xml) => {
@@ -132,7 +132,7 @@ Time_Entry.prototype.create = function(fn) {
  * @api public
  */
 
-Time_Entry.prototype.update = function(fn) {
+TimeEntry.prototype.update = function(fn) {
 
 	if (typeof arguments[1] === 'function') {
 		this.time_entry_id = arguments[0]
@@ -163,7 +163,7 @@ Time_Entry.prototype.update = function(fn) {
  * @api public
  */
 
-Time_Entry.prototype.get = function(fn) {
+TimeEntry.prototype.get = function(fn) {
 
 	if (typeof arguments[1] === 'function') {
 		this.time_entry_id = arguments[0]
@@ -194,7 +194,7 @@ Time_Entry.prototype.get = function(fn) {
  * @api public
  */
 
-Time_Entry.prototype.delete = function(fn) {
+TimeEntry.prototype.delete = function(fn) {
 
 	if (typeof arguments[1] === 'function') {
 		this.time_entry_id = arguments[0]
@@ -225,7 +225,7 @@ Time_Entry.prototype.delete = function(fn) {
  * @api public
  */
 
-Time_Entry.prototype.list = function(fn) {
+TimeEntry.prototype.list = function(fn) {
 	var options = []
 
 	if (typeof arguments[1] === 'function') {
@@ -253,7 +253,7 @@ Time_Entry.prototype.list = function(fn) {
 				time_entries = []
 
 				select('//xmlns:time_entry', xml).forEach(a => {
-					var time_entry = new this.freshbooks.Time_Entry()
+					var time_entry = new this.freshbooks.TimeEntry()
 					xml = new DOMParser({xmlns: {'':NS}}).parseFromString('<?xml version="1.0" encoding="UTF-8"?>' + '<response xmlns="http://www.freshbooks.com/api/" status="ok">' + a.toString() + '</response>')
 					time_entry._getXML(xml, () => {time_entries.push(time_entry)})
 				})
