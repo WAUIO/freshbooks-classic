@@ -13,8 +13,18 @@ const PARSE_OPTIONS = {
 }
 
 const parseSync = str => parseStringSync(str, PARSE_OPTIONS)
+
+const irregularPlurals = {
+	categories: 'category',
+	staff_members: 'member',
+	taxes: 'tax',
+	time_entries: 'time_entry',
+	default_terms: 'terms',
+	currencies: 'currency',
+}
+
 const parsePlurals = (key, value) => {
-	const singular = key.replace(/s$/, '')
+	const singular =  irregularPlurals[key] || key.replace(/s$/, '')
 	if(singular === key) return [false]
 	if(value[singular] === undefined) return [false]
 	const pageProps = _.pick(['page', 'per_page', 'pages', 'total'], value)
