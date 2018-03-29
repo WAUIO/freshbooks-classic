@@ -32,7 +32,8 @@
     "@babel/preset-env": "^7.0.0-beta.42",
     "@babel/runtime": "^7.0.0-beta.42",
     "ava": "^1.0.0-beta.3",
-    "concurrently": "^3.5.1"
+    "concurrently": "^3.5.1",
+    "nyc": "^11.6.0"
   },
   "scripts": {
     "test": "npm run build && ava -v",

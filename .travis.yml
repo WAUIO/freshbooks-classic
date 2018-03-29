@@ -9,4 +9,4 @@ install:
   - yarn install --ignore-engines
 
 script:
-  - 'yarn test # && nyc report --reporter=text-lcov > coverage.lcov && codecov'
+  - 'yarn test && nyc report --reporter=text-lcov > coverage.lcov && codecov'
