@@ -5,9 +5,13 @@ node_js:
   - '6'
   - '4'
 
+before_install:
+  - 'export PATH="$PWD/scripts:$PATH"'
+  - 'replace-yarn'
+
 install:
   - yarn global add codecov
   - yarn
 
 script:
-  - yarn test && nyc report --reporter=text-lcov > coverage.lcov && codecov
+  - 'yarn test # && nyc report --reporter=text-lcov > coverage.lcov && codecov'
