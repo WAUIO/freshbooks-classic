@@ -65,10 +65,21 @@ test.serial('estimate.list', async t => {
 	const {estimate} = new FreshBooks(url, token)
 	const result = await estimate.list()
 	t.true(_.isArray(result.estimates), 'has estimates array')
+	t.true(_.isInteger(result.page), 'page is an integer')
+	t.true(_.isInteger(result.pages), 'pages is an integer')
+	t.true(_.isInteger(result.total), 'total is an integer')
+	t.true(_.isInteger(result.per_page), 'per_page is an integer')
 })
 
 test.serial('estimate.delete', async t => {
 	const {estimate} = new FreshBooks(url, token)
 	const result = await estimate.delete({estimate_id})
 	t.true(result, 'returns true')
+})
+
+test.serial('estimate.listAll', async t => {
+	const {estimate} = new FreshBooks(url, token)
+	const result = await estimate.listAll()
+	t.true(_.isArray(result), 'returns array')
+	t.true(_.every(result, _.isPlainObject), 'every result inside array is an object')
 })

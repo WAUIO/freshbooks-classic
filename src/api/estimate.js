@@ -1,3 +1,4 @@
+import _ from 'lodash/fp'
 import {build} from '../utils/xml'
 import {spread} from '../utils/params'
 
@@ -108,6 +109,15 @@ class Estimate {
 		spread({estimate_id: 'string!'}, options)($xml)
 		await post($xml.end())
 		return true
+	}
+	async listAll(options){
+		const request = page => this.list({...options, page, per_page: 100})
+		const first = await request(1)
+		const pages = _.range(first.page + 1, first.pages + 1).map(request)
+		return _.flow([
+			_.map('estimates'),
+			_.spread(_.concat([])),
+		])(await Promise.all([first, ...pages]))
 	}
 }
 

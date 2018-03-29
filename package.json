@@ -35,9 +35,9 @@
     "concurrently": "^3.5.1"
   },
   "scripts": {
-    "test": "npm run build && ava",
+    "test": "npm run build && ava -v",
     "build": "babel src -sd lib",
-    "dev": "concurrently -kr 'babel src -wsd lib' 'ava -w'"
+    "dev": "concurrently -kr 'babel src -wsd lib' 'ava -wv'"
   },
   "ava": {
     "files": [

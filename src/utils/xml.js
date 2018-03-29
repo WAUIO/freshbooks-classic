@@ -50,7 +50,7 @@ const cleanup = a => lodash.transform(a, (result, value, key) => {
 		if(value.deprecated) return
 		const [singular, pageProps] = parsePlurals(key, value)
 		if(singular){
-			result = Object.assign(result, pageProps)
+			result = Object.assign(result, cleanup(pageProps))
 			// [TODO]: make it simple, remove castArray
 			result[key] = castArray(cleanup(value[singular]))
 			return
