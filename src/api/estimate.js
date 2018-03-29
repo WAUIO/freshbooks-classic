@@ -44,13 +44,10 @@ const methods = {
 	markAsSent: [{select: true, result: true}],
 }
 
-module.exports = (options) => new Estimate(options)
-
+module.exports = options => new Estimate(options)
 class Estimate extends Endpoint {
-	constructor(...args){
-		super(...args)
-		this.name = name
+	constructor({http}){
+		super({http, name})
 		this.setMethods(Estimate, methods, {select, schema})
-		return this
 	}
 }

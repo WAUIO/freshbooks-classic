@@ -3,7 +3,8 @@ import {build} from './utils/xml'
 import {spread} from './utils/params'
 
 export default class Endpoint {
-	constructor({http}){
+	constructor({http, name}){
+		this.name = name
 		this.post = http.post.bind(http)
 	}
 	setMethods(BaseClass, object, baseOptions = {}){
