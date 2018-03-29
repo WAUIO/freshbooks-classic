@@ -10,3 +10,6 @@ install:
 
 script:
   - 'yarn test && nyc report --reporter=text-lcov > coverage.lcov && codecov'
+
+notifications:
+  email: false
