@@ -14,28 +14,9 @@ set -eo pipefail
 [[ "$(echo $TRAVIS_NODE_VERSION | grep -o "[0-9]" | head -n1)" > '4' ]] && exit 0
 
 
-ORIGINAL="$(which yarn)"
-SECOND="$(echo "$PATH" | awk -F ":" '{print $2}')/yarn"
-OUTFILE="${ORIGINAL:-$SECOND}"
-
-(
-cat <<'EOF'
-#!/usr/bin/env bash
-set -exo pipefail
-
-if [[ -z "$@" ]]; then
-	npm install
-elif [[ "$@" = *"global add"* ]]; then
-	args = "$(echo "$@" | sed 's/global add/i -g/')"
-	npm $args
-else
-	npm $@
-fi
-
-EOF
-) > $OUTFILE
-
-chmod +x "$OUTFILE"
+# ORIGINAL="$(which yarn)"
+# SECOND="$(echo "$PATH" | awk -F ":" '{print $2}')/yarn"
+# OUTFILE="${ORIGINAL:-$SECOND}"
 
 (
 cat <<'EOF'

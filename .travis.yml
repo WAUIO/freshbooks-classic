@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - 'node'
   - '8'
-  - '6'
-  - '4'
+  - '6.10.3'
+  - '4.3.2'
 
 before_install:
   - 'export PATH="$PWD/scripts:$PATH"'
