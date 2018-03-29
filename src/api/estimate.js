@@ -6,13 +6,8 @@ class Estimate {
 		this.name = 'estimate'
 		this.post = http.post.bind(http)
 		this.xml = action => build(`${this.name}.${action}`)
-		return this
-	}
-	async create(options){
-		const {post, name, xml} = this
-		const action = 'create'
-		const schema = {
-			client_id: 'string!',
+		this.schema = {
+			client_id: 'string',
 			contacts: 'array[contact.contact_id]',
 			status: 'string',
 			po_number: 'string',
@@ -34,11 +29,85 @@ class Estimate {
 			vat_number: 'string',
 			lines: 'array[line]',
 		}
-
-		const $xml = xml(action)
-		spread(schema, options)($xml.element(name))
+		return this
+	}
+	async create(options){
+		const {post, name, xml, schema} = this
+		const $xml = xml('create')
+		spread({
+			...schema,
+			client_id: 'string!',
+		}, options)($xml.element(name))
 		const {estimate_id} = await post($xml.end())
 		return estimate_id
+	}
+	async update(options){
+		const {post, name, xml, schema} = this
+		const $xml = xml('update')
+		spread({
+			...schema,
+			estimate_id: 'string!',
+		}, options)($xml.element(name))
+		await post($xml.end())
+		return true
+	}
+	async get(options){
+		const {post, name, xml} = this
+		const $xml = xml('get')
+		spread({estimate_id: 'string!'}, options)($xml)
+		const {estimate} = await post($xml.end())
+		return estimate
+	}
+	async delete(options){
+		const {post, name, xml} = this
+		const $xml = xml('delete')
+		spread({estimate_id: 'string!'}, options)($xml)
+		await post($xml.end())
+		return true
+	}
+	async list(options){
+		const {post, name, xml} = this
+		const $xml = xml('list')
+		spread({
+			client_id: 'string',
+			folder: 'string',
+			date_from: 'string',
+			date_to: 'string',
+			page: 'string',
+			per_page: 'string',
+		}, options)($xml)
+		return await post($xml.end())
+	}
+	async sendByEmail(options){
+		const {post, name, xml} = this
+		const $xml = xml('sendByEmail')
+		spread({
+			estimate_id: 'string!',
+			subject: 'string',
+			message: 'string',
+		}, options)($xml)
+		await post($xml.end())
+		return true
+	}
+	async getPDF(options){
+		const {post, name, xml} = this
+		const $xml = xml('getPDF')
+		spread({estimate_id: 'string!'}, options)($xml)
+		return await post($xml.end(), {raw: true})
+	}
+	async accept(options){
+		const {post, name, xml} = this
+		const $xml = xml('accept')
+		spread({estimate_id: 'string!'}, options)($xml)
+		await post($xml.end())
+		return true
+	}
+	async markAsSent(options){
+		const {post, name, xml} = this
+		const $xml = xml('markAsSent')
+		spread({estimate_id: 'string!'}, options)($xml)
+		await post($xml.end())
+		return true
 	}
 }
 

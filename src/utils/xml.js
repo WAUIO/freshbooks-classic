@@ -24,7 +24,8 @@ const irregularPlurals = {
 }
 
 const parsePlurals = (key, value) => {
-	const singular =  irregularPlurals[key] || key.replace(/s$/, '')
+	if(_.isInteger(key)) return [false]
+	const singular = irregularPlurals[key] || key.replace(/s$/, '')
 	if(singular === key) return [false]
 	if(value[singular] === undefined) return [false]
 	const pageProps = _.pick(['page', 'per_page', 'pages', 'total'], value)
@@ -50,7 +51,8 @@ const cleanup = a => lodash.transform(a, (result, value, key) => {
 		const [singular, pageProps] = parsePlurals(key, value)
 		if(singular){
 			result = Object.assign(result, pageProps)
-			result[plural] = castArray(cleanup(value[singular])) // [TODO]: make it simple
+			// [TODO]: make it simple, remove castArray
+			result[key] = castArray(cleanup(value[singular]))
 			return
 		}
 		result[key] = cleanup(value)

@@ -15,7 +15,7 @@ export default class FreshBooksFetch {
 		this.token = token
 		this.post = this.post.bind(this)
 	}
-	post(xml){
+	post(xml, {raw} = {}){
 		return new Promise((resolve, reject) => {
 			const string = xml.toString()
 
@@ -29,13 +29,14 @@ export default class FreshBooksFetch {
 			}
 
 			var req = https.request(options, res => {
-				let str = ''
-				res.setEncoding('utf8')
-				res.on('data', chunk => {
-					str += chunk
-				})
+				if(res.statusCode >= 400) return reject(new Error(`HTTPS: ${res.statusCode}`))
+				const data = []
+				if(!raw) res.setEncoding('utf8')
+				res.on('data', chunk => data.push(chunk))
 				res.on('end', () => {
+					if(raw) return resolve(Buffer.concat(data))
 					try{
+						const str = data.join('')
 						const obj = XML.parse(str)
 						if(obj.status === 'ok') return resolve(obj)
 						const err = new Error(obj.error)

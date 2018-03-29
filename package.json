@@ -36,8 +36,8 @@
   },
   "scripts": {
     "test": "npm run build && ava",
-    "build": "babel src -d lib",
-    "dev": "concurrently -kr 'babel src -wd lib' 'ava -w'"
+    "build": "babel src -sd lib",
+    "dev": "concurrently -kr 'babel src -wsd lib' 'ava -w'"
   },
   "ava": {
     "files": [
