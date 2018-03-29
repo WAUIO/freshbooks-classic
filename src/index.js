@@ -8,7 +8,7 @@ export default class FreshBooks {
 
 		// this.category = require('./api/Category')(instance)
 		// this.client = require('./api/Client')(instance)
-		this.estimates = require('./api/estimates')(instance)
+		this.estimate = require('./api/estimate')(instance)
 		// this.expense = require('./api/Expense')(instance)
 		// this.gateway = require('./api/Gateway')(instance)
 		// this.invoice = require('./api/Invoice')(instance)
