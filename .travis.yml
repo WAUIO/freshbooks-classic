@@ -6,7 +6,7 @@ node_js:
   - '4.3.2'
 
 before_install:
-  - '[[ "$(npm -v)" = 2* ]] && npm i -g npm@5'
+  - 'if [[ "$(npm -v | grep -o "[0-9]" | head -n1)" = 2 ]]; then npm i -g npm@5; fi'
   - 'export PATH="$PWD/scripts:$PATH"'
   - 'replace-yarn'
 
