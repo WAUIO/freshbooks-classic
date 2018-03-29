@@ -3,12 +3,6 @@ node_js:
   - 'node'
   - '8'
   - '6.10.3'
-  - '4'
-
-before_install:
-  - 'if [[ "$(npm -v | grep -o "[0-9]" | head -n1)" = 2 ]]; then npm i -g npm@5; fi'
-  - 'export PATH="$PWD/scripts:$PATH"'
-  - 'replace-yarn'
 
 install:
   - yarn global add codecov
