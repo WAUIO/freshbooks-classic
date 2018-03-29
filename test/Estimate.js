@@ -1,75 +1,10 @@
-/* eslint-env mocha */
+import _ from 'lodash'
+import test from 'ava'
+import {url, token} from './credentials.json'
+import FreshBooks from '../lib'
 
-
-var assert = require('assert')
-var FreshBooks = require('../')
-
-describe('Estimate', () => {
-	var freshbooks = new FreshBooks('https://freshbooksjs.freshbooks.com/api/2.1/xml-in', '59dbd7310470641ff2332bd016ac2e4e')
-	var estimate = new freshbooks.Estimate()
-
-	describe('create()', () => {
-		it('should create a new estimate', function(done) {
-			estimate.client_id = 2
-
-			estimate.lines.push({
-				name: 'Test',
-				unit_cost: '5.00',
-				quantity: '5',
-				type: 'Item',
-			})
-
-			estimate.lines.push({
-				name: 'Test2',
-				unit_cost: '15.00',
-				quantity: '1',
-				type: 'Item',
-			})
-
-			estimate.create(function(err, estimate) {
-				done(err)
-			})
-		})
-	})
-
-	describe('update()', () => {
-		it('should update an estimate', function(done) {
-			estimate.notes = 'Lorem Ipsum'
-			estimate.update(function(err, estimate) {
-				done(err)
-			})
-		})
-	})
-
-	describe('get()', () => {
-		it('should get an estimate', function(done) {
-			estimate.get(estimate.estimate_id, function(err, estimate) {
-				done(err)
-			})
-		})
-	})
-
-	describe('sendByEmail()', () => {
-		it('should send an estimate by email', function(done) {
-			estimate.sendByEmail(function(err, estimate) {
-				done(err)
-			})
-		})
-	})
-
-	describe('list()', () => {
-		it('should list an array of estimates', function(done) {
-			estimate.list({client_id: estimate.client_id}, function(err, estimates) {
-				done(err)
-			})
-		})
-	})
-
-	describe('delete()', () => {
-		it('should delete an estimate', function(done) {
-			estimate.delete(function(err, estimate) {
-				done(err)
-			})
-		})
-	})
+test('estimates.create()', async t => {
+	const {estimates} = new FreshBooks(url, token)
+	const id = await estimates.create({client_id: 2})
+	t.true(_.isInteger(id), 'returns estimate_id')
 })

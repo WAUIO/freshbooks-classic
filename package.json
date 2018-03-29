@@ -15,7 +15,6 @@
   ],
   "homepage": "https://github.com/leonardodino/freshbooks.js",
   "dependencies": {
-    "@babel/preset-env": "^7.0.0-beta.42",
     "lodash": "^4.17.5",
     "safe-buffer": "^5.1.1",
     "xml2js-parser": "^1.1.1",
@@ -28,13 +27,25 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
     "@babel/core": "^7.0.0-beta.42",
-    "mocha": "5",
-    "nyc": "^11.6.0",
-    "prettier": "^1.11.1"
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.42",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/runtime": "^7.0.0-beta.42",
+    "ava": "^1.0.0-beta.3",
+    "concurrently": "^3.5.1"
   },
   "scripts": {
-    "test": "nyc mocha -t 10000 -R list",
-    "build": "babel src --out-dir lib"
+    "test": "npm run build && ava",
+    "build": "babel src -o lib",
+    "dev": "concurrently -kr 'babel src -wd lib' 'ava -w'"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.js"
+    ],
+    "sources": [
+      "lib/**/*.js"
+    ]
   },
   "publishConfig": {
     "access": "public"

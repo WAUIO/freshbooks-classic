@@ -1,19 +1,18 @@
 import {Buffer} from 'safe-buffer'
-import url from 'url'
+import {parse} from 'url'
 import https from 'https'
 import * as XML from '../utils/xml'
 
-const XMLNS = 'http://www.freshbooks.com/api/'
+// const XMLNS = 'http://www.freshbooks.com/api/'
 
-class FreshBooksFetch {
-	constructor({url, token, xmlns}){
+export default class FreshBooksFetch {
+	constructor({url, token}){
 		this.url = {
-			host: url.parse(this.url).hostname,
-			port: url.parse(this.url).port,
-			path: url.parse(this.url).path,
+			host: parse(url).hostname,
+			port: parse(url).port,
+			path: parse(url).path,
 		}
 		this.token = token
-		this.xmlns = xmlns
 		this.post = this.post.bind(this)
 	}
 	post(xml){
@@ -21,7 +20,7 @@ class FreshBooksFetch {
 			const string = xml.toString()
 
 			const options = {
-				url: this.url,
+				...this.url,
 				method: 'POST',
 				headers: {
 					'Content-Length': Buffer.byteLength(string, 'utf8'),
