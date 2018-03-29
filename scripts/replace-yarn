@@ -9,9 +9,9 @@ set -eo pipefail
 [[ -z "$CI" ]] && echo 'exiting...'
 [[ -z "$CI" ]] && exit 1
 
-[[ "${echo $TRAVIS_NODE_VERSION | grep -o "[0-9]" | head -n1}" > '4' ]] && echo 'not node 4'
-[[ "${echo $TRAVIS_NODE_VERSION | grep -o "[0-9]" | head -n1}" > '4' ]] && echo 'exiting...'
-[[ "${echo $TRAVIS_NODE_VERSION | grep -o "[0-9]" | head -n1}" > '4' ]] && exit 0
+[[ "$(echo $TRAVIS_NODE_VERSION | grep -o "[0-9]" | head -n1)" > '4' ]] && echo 'not node 4'
+[[ "$(echo $TRAVIS_NODE_VERSION | grep -o "[0-9]" | head -n1)" > '4' ]] && echo 'exiting...'
+[[ "$(echo $TRAVIS_NODE_VERSION | grep -o "[0-9]" | head -n1)" > '4' ]] && exit 0
 
 
 ORIGINAL="$(which yarn)"
