@@ -1,28 +1,23 @@
 {
-  "name": "@leonardodino/freshbooks",
-  "description": "Node.js wrapper for FreshBooks API",
-  "version": "3.0.0-wip-0.0.1",
+  "name": "freshbooks-classic",
+  "description": "FreshBooks Classic API wrapper",
+  "version": "0.0.0-alpha-0.0.1",
   "author": "Leonardo Dino",
-  "contributors": [
-    {
-      "name": "Marc Loney",
-      "email": "<marc@metacrash.com.au>"
-    },
-    {
-      "name": "Tom Spencer",
-      "email": "fiznool@gmail.com"
-    }
-  ],
-  "homepage": "https://github.com/leonardodino/freshbooks.js",
+  "scripts": {
+    "test": "npm run build && nyc ava -v",
+    "build": "babel src -sd lib",
+    "dev": "concurrently -kr 'babel src -wsd lib' 'ava -wv'"
+  },
+  "homepage": "https://github.com/leonardodino/freshbooks-classic",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 6"
+  },
   "dependencies": {
     "lodash": "^4.17.5",
     "safe-buffer": "^5.1.1",
     "xml2js-parser": "^1.1.1",
     "xmlbuilder": "^9.0.7"
-  },
-  "main": "index.js",
-  "engines": {
-    "node": ">= 6"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
@@ -35,11 +30,6 @@
     "concurrently": "^3.5.1",
     "nyc": "^11.6.0"
   },
-  "scripts": {
-    "test": "npm run build && nyc ava -v",
-    "build": "babel src -sd lib",
-    "dev": "concurrently -kr 'babel src -wsd lib' 'ava -wv'"
-  },
   "ava": {
     "files": [
       "test/**/*.js"
@@ -48,12 +38,6 @@
       "lib/**/*.js"
     ]
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/leonardodino/freshbooks.js.git"
-  }
+  "repository": "leonardodino/freshbooks-classic"
 }

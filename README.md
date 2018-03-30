@@ -1,38 +1,31 @@
-# Freshbooks.js
+# freshbooks-classic
 
-[![npm version](https://badge.fury.io/js/%40leonardodino%2Ffreshbooks.svg)](https://www.npmjs.com/package/@leonardodino/freshbooks)
-[![Build Status](https://travis-ci.org/leonardodino/freshbooks.js.svg?branch=master)](https://travis-ci.org/leonardodino/freshbooks.js)
-[![Test Coverage](https://codecov.io/gh/leonardodino/freshbooks.js/branch/master/graph/badge.svg)](https://codecov.io/gh/leonardodino/freshbooks.js)
+[![npm version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Coverage Status][codecov-badge]][codecov-url]
 
-Freshbooks.js is a node.js module providing a wrapper to the [FreshBooks]
-(http://www.freshbooks.com) API.
+`freshbooks-classic` is a node.js module providing a wrapper to
+the vintage version of [FreshBooks](http://www.freshbooks.com) API.
 
-All API method are fairly well documented at [FreshBooks Developers]
-(http://developers.freshbooks.com) but if you find a discrepancy between the
-docs and this wrapper feel free to file an "Issue".
+All API methods are documented at [FreshBooks](http://freshbooks.com/developers)
+if you find any discrepancy between the docs and this wrapper feel free to file
+an [Issue](https://github.com/leonardodino/freshbooks-classic/issues).
 
 ## Installation
-
 ```shell
-$ npm install --save @leonardodino/freshbooks
+$ npm install --save freshbooks-classic
 ```
 
 or
 
 ```shell
-$ yarn add @leonardodino/freshbooks
+$ yarn add freshbooks-classic
 ```
-
-Note: This module utilises [libxmljs](https://github.com/polotek/libxmljs). You
-will need have the **libxml2** library installed and also the **libxml2-devel**
-(**libxml2-dev** on debian systems) package. This comes with the `xml2-config`
-utility that is needed for compiling.  **This command must be in your path.**
 
 ## Example
 ```javascript
-const FreshBooks = require('freshbooks')
-const freshbooks = new FreshBooks(api_url, api_token)
-const invoice = new freshbooks.Invoice()
+const FreshBooks = require('freshbooks-classic')
+const {invoice} = new FreshBooks(api_url, api_token)
 
 invoice.get(invoice_id, function(err, invoice){
   if(err){
@@ -42,54 +35,33 @@ invoice.get(invoice_id, function(err, invoice){
   console.log(`Invoice Number: ${invoice.number}`)
 })
 ```
-## Changelog
 
-**v2.0.0 - 2016-09-03**
-
-- Fixed an issue with the `Content-Length` header not respecting multi-byte strings encoded with UTF-8 [#2](/../../issues/2)
-
-_Note: this may break existing code that works around this, hence the major bump to v2.0.0. Most implementations will be able to upgrade to v2.0.0 without any issues._
-
-**Update 2016-05-31:** Added support for node v5 and v6. Updated libxmljs to 0.18.0. Bumped the version to 1.0.1.
-
-**Update 05/10/2015:** Project maintenance taken over by Flow XO. Fixed issue with Invoice lines. Created `invoice.lines.add` function. Added support for node v4. Updated libxmljs to 0.14.3. Bumped the version to 1.0.0.
-
-Note: this is a backwards-compatible release. If you were previously using v0.2.1, you should be safe to upgrade to v1.0.0.
-
-**Update 24/08/2013:** Bumped the version to 0.2.1. Fixed a bug preventing invoice lines from being created/updated. Updated libxmljs to 0.8.1. Fixed Projects and Category tests from failing.
-
-**Update 17/10/2012:** ...and version 0.2.0 has landed! We are now using the latest
-version of libxmljs (currently version 0.6.1). We have also added an "options"
-object to contain invoice_id, subject and message to
-[Estimate,Invoice].sendByEmail, allowing for custom email messages.
-
-**Update 18/08/2012:** Version 0.1.2 has just been pushed. There is now an "options"
-object containing page, per_page, pages and total accessible from list methods.
-
-**Update 14/07/2012:** Just entered version 0.1.1! Most methods now accept an optional
-id first argument (similar to how invoice.get() works). Examples have been
-updated *and* all tests are passing.
-
-**Update 08/07/2012:** We've just entered version 0.1.0! All required API features are
-now implemented excluding callback and system.
-
-**Update 05/06/2012:** I've implimented about 75% of the API. Most of the core features
-are working but i'm still working through some minor issues. Tests are working
-now though!
-
-**Update 04/06/2012:** This project is very much a *WORK IN PROGRESS*. So far I've
-implimented the majority of the Invoice API and am tidying up the code before
-launching into the other APIs. I've also decided
-to take some liberties on some aspects of the API, ie replacing
-invoice.lines.add/delete/update methods with Array.pop/push, as frankly there
-are better ways to interact with the API in JS than is currently implimented.
+## Features / Goals
+- no native modules.
+- must work on `browser`, `aws-lambda`, and `node v6`+.
 
 ## Credits
+This library is a rewrite of the `freshbooks.js`,
+written by [Marc Loney](https://github.com/marcloney/freshbooks.js), and forked
+in 2015 by [Flow XO](https://github.com/flowxo/freshbooks.js).
 
-The vast majority of the work in this repo was performed by Marc Loney.
-In 2015 Flow XO took over the maintenance of the project.
-
-Flow XO would like to thank Marc for all his original work on this project!
+## Implementation Roadmap
+- [ ] `FreshBooks.category`
+- [ ] `FreshBooks.client`
+- [x] `FreshBooks.estimate`
+- [ ] `FreshBooks.expense`
+- [ ] `FreshBooks.gateway`
+- [ ] `FreshBooks.invoice`
+- [ ] `FreshBooks.item`
+- [ ] `FreshBooks.language`
+- [ ] `FreshBooks.payment`
+- [ ] `FreshBooks.project`
+- [ ] `FreshBooks.recurring`
+- [ ] `FreshBooks.staff`
+- [ ] `FreshBooks.task`
+- [ ] `FreshBooks.tax`
+- [ ] `FreshBooks.timeEntry`
+- [ ] cleanup excess obscurity
 
 ## License
 
@@ -113,3 +85,10 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[npm-badge]: https://badge.fury.io/js/freshbooks-classic.svg
+[npm-url]: https://www.npmjs.com/package/freshbooks-classic
+[travis-badge]: https://travis-ci.org/leonardodino/freshbooks-classic.svg?branch=master
+[travis-url]: https://travis-ci.org/leonardodino/freshbooks-classic
+[codecov-badge]: https://codecov.io/gh/leonardodino/freshbooks-classic/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/leonardodino/freshbooks-classic
