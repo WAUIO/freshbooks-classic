@@ -27,15 +27,18 @@ const schema = {
 	vat_number: 'string',
 	lines: 'array[line]',
 }
+const filter = {
+	client_id: 'string',
+	folder: 'string',
+	date_from: 'string',
+	date_to: 'string',
+}
 const methods = {
 	create: [{schema: true, required: 'client_id', wrap: true, result: key}],
 	update: [{schema: true, select: true, wrap: true, result: true}],
 	get: [{select: true, result: name}],
 	delete: [{select: true, result: true}],
-	list: [
-		{paginate},
-		{client_id: 'string', folder: 'string', date_from: 'string', date_to: 'string'},
-	],
+	list: [{paginate}, filter],
 	sendByEmail: [
 		{select: true, result: true},
 		{subject: 'string', message: 'string'},
