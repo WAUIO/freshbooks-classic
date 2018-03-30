@@ -27,17 +27,15 @@ $ yarn add freshbooks-classic
 const FreshBooks = require('freshbooks-classic')
 const {invoice} = new FreshBooks(api_url, api_token)
 
-invoice.get(invoice_id, function(err, invoice){
-  if(err){
-    //returns if an error has occured, ie invoice_id doesn't exist.
-    return console.log(err)
-  }
-  console.log(`Invoice Number: ${invoice.number}`)
-})
+(async () => {
+  const {number} = await invoice.get(invoice_id)
+  console.log(`Invoice Number: ${number}`)
+})()
 ```
 
 ## Features / Goals
 - no native modules.
+- `async`/`await` friendly.
 - must work on `browser`, `aws-lambda`, and `node v6`+.
 
 ## Credits
