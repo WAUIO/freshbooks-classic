@@ -39,7 +39,7 @@ export default class FreshBooksFetch {
 						const str = data.join('')
 						const obj = XML.parse(str)
 						if(obj.status === 'ok') return resolve(obj)
-						const err = new Error(obj.error)
+						const err = new Error(obj.error || 'invalid freshbooks response')
 						err.code = obj.code
 						throw err
 					}catch (e){
