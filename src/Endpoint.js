@@ -13,7 +13,7 @@ export default class Endpoint {
 		})
 		this.freezeMethods()
 	}
-	setMethod(BaseClass, {schema: baseSchema, select: baseSelect}){
+	setMethod(BaseClass, {schema: baseSchema, select: baseSelect, key: baseKey}){
 		return (action, {required, wrap, schema, select, raw, paginate, result = _.identity} = {}, actionSchema) => {
 			if(this.__freezed) return
 			const {post, name} = this
@@ -40,6 +40,9 @@ export default class Endpoint {
 				let $root = $xml
 				if(wrap){
 					$root = $xml.element(_.isString(wrap) ? wrap : name)
+				}
+				if(!_.isPlainObject(options) && select && !schema && !actionSchema){
+					options = {[baseKey]: options}
 				}
 				spread(_schema, options)($root)
 				const response = await post($xml.end(), {raw})

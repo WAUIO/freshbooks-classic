@@ -35,6 +35,22 @@ test.serial('estimate.get', async t => {
 	t.true(_.isString(result.links.client_view), 'has links.client_view')
 })
 
+test.serial('estimate.get (direct selection)', async t => {
+	const {estimate} = new FreshBooks(url, token)
+	const result = await estimate.get(estimate_id)
+
+	t.is(result.status, 'draft', 'estimate is a draft')
+	t.is(result.estimate_id, estimate_id, 'matches provided estimate_id')
+	t.is(result.client_id, client_id, 'matches provided client_id')
+	t.is(result.notes, 'Lorem Ipsum', 'matches provided notes')
+	t.true(_.isString(result.date), 'has date')
+	t.not(new Date(result.date).toString(), 'Invalid Date', 'date is valid')
+	t.true(_.isFinite(result.amount), 'has finite amount')
+	t.true(_.isFinite(result.discount), 'has finite discount')
+	t.true(_.isString(result.links.view), 'has links.view')
+	t.true(_.isString(result.links.client_view), 'has links.client_view')
+})
+
 test.serial('estimate.sendByEmail', async t => {
 	const {estimate} = new FreshBooks(url, token)
 	const result = await estimate.sendByEmail({estimate_id})

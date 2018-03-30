@@ -49,6 +49,6 @@ module.exports = options => new Estimate(options)
 class Estimate extends Endpoint {
 	constructor({http}){
 		super({http, name})
-		this.setMethods(Estimate, methods, {select, schema})
+		this.setMethods(Estimate, methods, {key, select, schema})
 	}
 }
