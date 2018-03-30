@@ -1,6 +1,7 @@
 import Endpoint from '../Endpoint'
 
 const name = 'estimate'
+const paginate = 'estimates'
 const key = `${name}_id`
 const select = {[key]: 'string!'}
 const schema = {
@@ -32,7 +33,7 @@ const methods = {
 	get: [{select: true, result: name}],
 	delete: [{select: true, result: true}],
 	list: [
-		{paginate: 'estimates'},
+		{paginate},
 		{client_id: 'string', folder: 'string', date_from: 'string', date_to: 'string'},
 	],
 	sendByEmail: [
