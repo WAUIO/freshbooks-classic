@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import test from 'ava'
 import {url, token} from './credentials.json'
-import FreshBooks from '../lib'
+import FreshBooks from '..'
 
 let client_id = 2
 let estimate_id = null

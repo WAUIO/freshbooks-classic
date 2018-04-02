@@ -6,10 +6,10 @@
   "scripts": {
     "test": "npm run build && nyc ava -v",
     "build": "babel src -sd lib",
-    "dev": "concurrently -kr 'babel src -wsd lib' 'ava -wv'"
+    "dev": "concurrently -kr 'babel src -wsd lib' 'ava -w'"
   },
   "homepage": "https://github.com/leonardodino/freshbooks-classic",
-  "main": "index.js",
+  "main": "lib/index.js",
   "engines": {
     "node": ">= 6"
   },
