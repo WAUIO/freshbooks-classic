@@ -5,7 +5,7 @@ export default class FreshBooks {
 		const http = new FreshBooksFetch({url, token})
 
 		// this.category = require('./api/Category')({http})
-		// this.client = require('./api/Client')({http})
+		this.client = require('./api/client')({http})
 		this.estimate = require('./api/estimate')({http})
 		// this.expense = require('./api/Expense')({http})
 		// this.gateway = require('./api/Gateway')({http})

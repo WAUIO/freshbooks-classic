@@ -45,7 +45,7 @@ in 2015 by [Flow XO](https://github.com/flowxo/freshbooks.js).
 
 ## Implementation Roadmap
 - [ ] `FreshBooks.category`
-- [ ] `FreshBooks.client`
+- [x] `FreshBooks.client`
 - [x] `FreshBooks.estimate`
 - [ ] `FreshBooks.expense`
 - [ ] `FreshBooks.gateway`
