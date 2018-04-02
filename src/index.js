@@ -1,6 +1,6 @@
 import FreshBooksFetch from './utils/fetch'
 
-export default class FreshBooks {
+class FreshBooks {
 	constructor(url, token){
 		const http = new FreshBooksFetch({url, token})
 
@@ -21,3 +21,6 @@ export default class FreshBooks {
 		// this.timeEntry = require('./api/TimeEntry')({http})
 	}
 }
+
+exports.default = FreshBooks
+module.exports = exports['default']
