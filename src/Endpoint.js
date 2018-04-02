@@ -57,11 +57,13 @@ export default class Endpoint {
 				BaseClass.prototype[`${action}All`] = async function(options){
 					const request = page => this[action]({...options, page, per_page: 100})
 					const first = await request(1)
-					const pages = _.range(first.page + 1, first.pages + 1).map(request)
-					return _.flow([
-						_.map(paginate),
-						_.spread(_.concat([])),
-					])(await Promise.all([first, ...pages]))
+					const {pages} = first
+					let results = [...first[paginate]]
+					for(let page = 2; page < first.pages + 1; page++){
+						const current = await request(page)
+						results = [...results, ...current[paginate]]
+					}
+					return results
 				}
 			}
 		}
