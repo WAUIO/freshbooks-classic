@@ -5,6 +5,7 @@ class FreshBooks {
 		const http = new FreshBooksFetch({url, token})
 
 		// this.category = require('./api/Category')({http})
+		this.callback = require('./api/Callback')({http})
 		this.client = require('./api/client')({http})
 		this.estimate = require('./api/estimate')({http})
 		// this.expense = require('./api/Expense')({http})
