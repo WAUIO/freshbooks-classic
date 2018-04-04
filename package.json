@@ -1,7 +1,7 @@
 {
   "name": "freshbooks-classic",
   "description": "FreshBooks Classic API wrapper",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Leonardo Dino",
   "scripts": {
     "test": "npm run build && nyc ava -v",
