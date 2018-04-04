@@ -1,7 +1,14 @@
 import _ from 'lodash/fp'
-import lodash from 'lodash'
 import {parseStringSync} from 'xml2js-parser'
 import xmlbuilder from 'xmlbuilder'
+
+const transform = _.transform.convert({
+	cap: false,
+	curry: false,
+	fixed: true,
+	immutable: false,
+	rearg: false,
+})
 
 const BOOL_REGEXP = /^(?:true|false)$/i
 const PARSE_OPTIONS = {
@@ -41,7 +48,7 @@ const parseValue = value => [
 	x => !(BOOL_REGEXP.test(x)) ? x : (x.toLowerCase() === 'true'),
 ].reduce((v, func) => func(v), value)
 
-const cleanup = a => lodash.transform(a, (result, value, key) => {
+const cleanup = a => transform(a, (result, value, key) => {
 	if(_.isArray(value)){
 		result[key] = _.map(cleanup, value)
 		return
