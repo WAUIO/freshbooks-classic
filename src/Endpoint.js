@@ -58,6 +58,8 @@ export default class Endpoint {
 					const request = page => this[action]({...options, page, per_page: 100})
 					const first = await request(1)
 					const {pages} = first
+					if(!pages) return []
+					if(!_.isArray(first[paginate])) return []
 					let results = [...first[paginate]]
 					for(let page = 2; page < first.pages + 1; page++){
 						const current = await request(page)

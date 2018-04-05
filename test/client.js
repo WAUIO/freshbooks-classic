@@ -82,6 +82,13 @@ test.serial('listAll', async t => {
 	t.true(_.every(result, _.isPlainObject), 'every result inside array is an object')
 })
 
+test.serial('listAll empty results', async t => {
+	const {client} = new FreshBooks(url, token)
+	const result = await client.listAll({email: '§_INVALID_EMAIL_§'})
+	t.true(_.isArray(result), 'returns array')
+	t.is(result.length, 0, 'array is empty')
+})
+
 test.serial('delete', async t => {
 	const {client} = new FreshBooks(url, token)
 	const result = await client.delete({client_id})
