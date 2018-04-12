@@ -4,9 +4,9 @@ import {url, token} from './credentials.json'
 import FreshBooks from '..'
 
 let client_id = null
-let email = 'freshbooks-classic@dispostable.com'
-let first_name = 'abc'
-let last_name = 'xyz'
+const email = 'freshbooks-classic@dispostable.com'
+const first_name = 'abc'
+const last_name = 'xyz'
 
 test.serial('create', async t => {
 	const {client} = new FreshBooks(url, token)
@@ -93,9 +93,13 @@ test.serial('delete', async t => {
 	const {client} = new FreshBooks(url, token)
 	const result = await client.delete({client_id})
 	t.true(result, 'returns true')
+
+	const fn = () => client.get({client_id})
+	const e = await t.throws(fn, `'client_id' not found. Client is deleted.`)
+	t.is(e.code, 50010)
 })
 
-test.serial('throw failures', async t => {
+test('throw failures', async t => {
 	const {client} = new FreshBooks(url, token)
 	await Promise.all([
 		async () => {
