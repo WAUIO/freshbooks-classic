@@ -71,6 +71,12 @@ test.serial('sendByEmail', async t => {
 	t.true(result, 'returns true')
 })
 
+test.serial('sendByEmail (direct selection)', async t => {
+	const {estimate} = new FreshBooks(url, token)
+	const result = await estimate.sendByEmail(estimate_id)
+	t.true(result, 'returns true')
+})
+
 test.serial('markAsSent', async t => {
 	const {estimate} = new FreshBooks(url, token)
 	const result = await estimate.markAsSent({estimate_id})
@@ -83,9 +89,24 @@ test.serial('accept', async t => {
 	t.true(result, 'returns true')
 })
 
+test.serial('accept (direct selection)', async t => {
+	const {estimate} = new FreshBooks(url, token)
+	const fn = () => estimate.accept(estimate_id)
+	const e = await t.throws(fn, 'Failed to accept estimate. Estimate is already accepted.')
+	t.is(e.code, 50020)
+})
+
 test.serial('getPDF', async t => {
 	const {estimate} = new FreshBooks(url, token)
 	const result = await estimate.getPDF({estimate_id})
+	t.true(result instanceof Buffer, 'returns Buffer')
+	const magic = result.toString('hex', 0, 4)
+	t.is(magic, '25504446', 'returns PDF File')
+})
+
+test.serial('getPDF (direct selection)', async t => {
+	const {estimate} = new FreshBooks(url, token)
+	const result = await estimate.getPDF(estimate_id)
 	t.true(result instanceof Buffer, 'returns Buffer')
 	const magic = result.toString('hex', 0, 4)
 	t.is(magic, '25504446', 'returns PDF File')
@@ -101,20 +122,27 @@ test.serial('list', async t => {
 	t.true(_.isInteger(result.per_page), 'per_page is an integer')
 })
 
-test.serial('delete', async t => {
+test.serial('delete (direct selection)', async t => {
 	const {estimate} = new FreshBooks(url, token)
-	const result = await estimate.delete({estimate_id})
+	const result = await estimate.delete(estimate_id)
 	t.true(result, 'returns true')
 })
 
-test.serial('listAll', async t => {
+test.serial('delete', async t => {
+	const {estimate} = new FreshBooks(url, token)
+	const fn = () => estimate.delete({estimate_id})
+	const e = await t.throws(fn, `'estimate_id' not found. Estimate is deleted.`)
+	t.is(e.code, 50010)
+})
+
+test('listAll', async t => {
 	const {estimate} = new FreshBooks(url, token)
 	const result = await estimate.listAll()
 	t.true(_.isArray(result), 'returns array')
 	t.true(_.every(result, _.isPlainObject), 'every result inside array is an object')
 })
 
-test.serial('throw failures', async t => {
+test('throw failures', async t => {
 	const {estimate} = new FreshBooks(url, token)
 	await Promise.all([
 		async () => {

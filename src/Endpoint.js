@@ -41,7 +41,7 @@ export default class Endpoint {
 				if(wrap){
 					$root = $xml.element(_.isString(wrap) ? wrap : name)
 				}
-				if(!_.isPlainObject(options) && select && !schema && !actionSchema){
+				if(!_.isPlainObject(options) && select && !schema){
 					options = {[baseKey]: options}
 				}
 				spread(_schema, options)($root)
