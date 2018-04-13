@@ -58,6 +58,7 @@ in 2015 by [Flow XO](https://github.com/flowxo/freshbooks.js).
 - [ ] `FreshBooks.staff`
 - [ ] `FreshBooks.task`
 - [ ] `FreshBooks.tax`
+- [x] `FreshBooks.terms`
 - [ ] `FreshBooks.timeEntry`
 - [ ] cleanup excess obscurity
 

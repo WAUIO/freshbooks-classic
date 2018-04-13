@@ -19,6 +19,7 @@ class FreshBooks {
 		// this.staff = require('./api/staff')({http})
 		// this.task = require('./api/task')({http})
 		// this.tax = require('./api/tax')({http})
+		this.terms = require('./api/terms')({http})
 		// this.timeEntry = require('./api/time-entry')({http})
 	}
 }
