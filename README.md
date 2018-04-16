@@ -51,7 +51,7 @@ in 2015 by [Flow XO](https://github.com/flowxo/freshbooks.js).
 - [ ] `FreshBooks.gateway`
 - [ ] `FreshBooks.invoice`
 - [ ] `FreshBooks.item`
-- [ ] `FreshBooks.language`
+- [x] `FreshBooks.languages`
 - [ ] `FreshBooks.payment`
 - [ ] `FreshBooks.project`
 - [ ] `FreshBooks.recurring`

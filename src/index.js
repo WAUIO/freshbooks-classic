@@ -12,7 +12,7 @@ class FreshBooks {
 		// this.gateway = require('./api/gateway')({http})
 		// this.invoice = require('./api/invoice')({http})
 		this.item = require('./api/item')({http})
-		// this.language = require('./api/language')({http})
+		this.languages = require('./api/languages')({http})
 		// this.payment = require('./api/payment')({http})
 		// this.project = require('./api/project')({http})
 		// this.recurring = require('./api/recurring')({http})
