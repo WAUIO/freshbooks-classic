@@ -14,7 +14,7 @@ export default class Endpoint {
 		this.freezeMethods()
 	}
 	setMethod(BaseClass, {schema: baseSchema, select: baseSelect, key: baseKey}){
-		return (action, {required, wrap, schema, select, raw, paginate, result = _.identity} = {}, actionSchema) => {
+		return (action, {required, wrap, schema, select, raw, paginate, options: defaultOptions, result = _.identity} = {}, actionSchema) => {
 			if(this.__freezed) return
 			const {post, name} = this
 
@@ -43,6 +43,9 @@ export default class Endpoint {
 				}
 				if(!_.isPlainObject(options) && select && !schema){
 					options = {[baseKey]: options}
+				}
+				if(defaultOptions){
+					options = {...defaultOptions, ...options}
 				}
 				spread(_schema, options)($root)
 				const response = await post($xml.end(), {raw})
