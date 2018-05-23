@@ -10,7 +10,7 @@ class FreshBooks {
 		this.estimate = require('./api/estimate')({http})
 		// this.expense = require('./api/expense')({http})
 		// this.gateway = require('./api/gateway')({http})
-		// this.invoice = require('./api/invoice')({http})
+		this.invoice = require('./api/invoice')({http})
 		this.item = require('./api/item')({http})
 		this.languages = require('./api/languages')({http})
 		// this.payment = require('./api/payment')({http})
